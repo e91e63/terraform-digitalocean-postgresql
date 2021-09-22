@@ -14,9 +14,10 @@ terraform {
 }
 
 provider "postgresql" {
-  database = var.postgresql_conf.database
-  host     = var.postgresql_conf.host
-  password = var.postgresql_conf.password
-  port     = var.postgresql_conf.port
-  username = var.postgresql_conf.user
+  database  = var.postgresql_conf.database
+  host      = var.postgresql_conf.host
+  password  = var.postgresql_conf.password
+  port      = var.postgresql_conf.port
+  superuser = false
+  username  = var.postgresql_conf.user
 }

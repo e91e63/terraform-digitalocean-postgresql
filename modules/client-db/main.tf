@@ -1,6 +1,6 @@
 resource "postgresql_database" "main" {
-  name              = var.client_name
-  owner             = postgresql_role.main.name
+  name  = var.client_name
+  owner = postgresql_role.main.name
 }
 
 resource "postgresql_role" "main" {
@@ -13,6 +13,6 @@ resource "postgresql_role" "main" {
 
 resource "random_password" "main" {
   length  = 24
-  keepers = { client_name = var.client_name}
+  keepers = { client_name = var.client_name }
   special = true
 }

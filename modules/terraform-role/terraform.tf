@@ -14,9 +14,10 @@ terraform {
 }
 
 provider "postgresql" {
-  database = var.cluster_conf.database
-  host     = var.cluster_conf.host
-  password = var.cluster_conf.password
-  port     = var.cluster_conf.port
-  username = var.cluster_conf.user
+  database  = var.cluster_conf.database
+  host      = var.cluster_conf.host
+  password  = var.cluster_conf.password
+  port      = var.cluster_conf.port
+  username  = var.cluster_conf.user
+  superuser = false
 }

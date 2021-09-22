@@ -2,7 +2,7 @@ resource "postgresql_role" "terraform" {
   create_database = true
   create_role     = true
   name            = "terraform"
-  login           = false
+  login           = true
   password        = random_password.terraform.result
 }
 
