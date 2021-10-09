@@ -11,8 +11,8 @@ variable "postgresql_conf" {
   })
 }
 
-variable "project_conf" {
+variable "project_info" {
   type = object({
-    name = string
+    id = string
   })
 }

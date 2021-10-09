@@ -1,7 +1,3 @@
-data "digitalocean_project" "main" {
-  name = var.project_conf.name
-}
-
 resource "digitalocean_database_cluster" "main" {
   engine               = "pg"
   name                 = var.postgresql_conf.name
@@ -13,9 +9,8 @@ resource "digitalocean_database_cluster" "main" {
 }
 
 resource "digitalocean_project_resources" "main" {
-  project = data.digitalocean_project.main.id
+  project = var.project_info.id
   resources = [
     digitalocean_database_cluster.main.urn
   ]
 }
-
