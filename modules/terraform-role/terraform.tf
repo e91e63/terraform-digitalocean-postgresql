@@ -9,15 +9,14 @@ terraform {
       version = "3.1.0"
     }
   }
-
   required_version = "~> 1"
 }
 
 provider "postgresql" {
-  database  = var.cluster_conf.database
-  host      = var.cluster_conf.host
-  password  = var.cluster_conf.password
-  port      = var.cluster_conf.port
-  username  = var.cluster_conf.user
+  database  = var.postgresql_info.database
+  host      = var.postgresql_info.host
+  password  = var.postgresql_info.password
+  port      = var.postgresql_info.port
+  username  = var.postgresql_info.user
   superuser = false
 }

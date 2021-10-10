@@ -1,11 +1,17 @@
+locals {
+  postgresql_conf = defaults(var.postgresql_conf, {
+    name = "${var.project_info.name}-postgresql"
+  })
+}
+
 resource "digitalocean_database_cluster" "main" {
   engine               = "pg"
-  name                 = var.postgresql_conf.name
-  node_count           = var.postgresql_conf.node_count
-  private_network_uuid = var.postgresql_conf.private_network_uuid
-  region               = var.postgresql_conf.region
-  size                 = var.postgresql_conf.size
-  version              = var.postgresql_conf.version
+  name                 = local.postgresql_conf.name
+  node_count           = local.postgresql_conf.node_count
+  private_network_uuid = local.postgresql_conf.vpc_uuid
+  region               = local.postgresql_conf.region
+  size                 = local.postgresql_conf.size
+  version              = local.postgresql_conf.version
 }
 
 resource "digitalocean_project_resources" "main" {

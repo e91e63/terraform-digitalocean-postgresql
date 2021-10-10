@@ -1,9 +1,10 @@
-output "conf" {
+output "info" {
+  sensitive = true
   value = {
-    database = var.cluster_conf.database
-    host     = var.cluster_conf.host
+    database = var.postgresql_info.database
+    host     = var.postgresql_info.host
     password = postgresql_role.terraform.password
-    port     = var.cluster_conf.port
+    port     = var.postgresql_info.port
     user     = postgresql_role.terraform.name
   }
 }

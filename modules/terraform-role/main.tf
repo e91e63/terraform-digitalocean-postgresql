@@ -8,6 +8,6 @@ resource "postgresql_role" "terraform" {
 
 resource "random_password" "terraform" {
   length  = 24
-  keepers = { cluster_urn = var.cluster_conf.urn }
+  keepers = { cluster_urn = var.postgresql_info.urn }
   special = true
 }

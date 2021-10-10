@@ -1,4 +1,4 @@
-variable "cluster_conf" {
+variable "postgresql_info" {
   type = object({
     database = string
     host     = string
