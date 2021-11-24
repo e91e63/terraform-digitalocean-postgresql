@@ -1,3 +1,14 @@
+terraform {
+  experiments = [module_variable_optional_attrs]
+  required_providers {
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2"
+    }
+  }
+  required_version = "~> 1"
+}
+
 locals {
   postgresql_conf = defaults(var.postgresql_conf, {
     name = "${var.project_info.name}-postgresql"
@@ -19,15 +30,4 @@ resource "digitalocean_project_resources" "main" {
   resources = [
     digitalocean_database_cluster.main.urn
   ]
-}
-
-terraform {
-  experiments = [module_variable_optional_attrs]
-  required_providers {
-    digitalocean = {
-      source  = "digitalocean/digitalocean"
-      version = "~> 2"
-    }
-  }
-  required_version = "~> 1"
 }

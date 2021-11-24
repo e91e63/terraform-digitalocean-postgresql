@@ -1,17 +1,3 @@
-resource "postgresql_role" "terraform" {
-  create_database = true
-  create_role     = true
-  name            = "terraform"
-  login           = true
-  password        = random_password.terraform.result
-}
-
-resource "random_password" "terraform" {
-  length  = 24
-  keepers = { cluster_urn = var.postgresql_info.urn }
-  special = true
-}
-
 terraform {
   required_providers {
     postgresql = {
@@ -33,4 +19,18 @@ provider "postgresql" {
   port      = var.postgresql_info.port
   username  = var.postgresql_info.user
   superuser = false
+}
+
+resource "postgresql_role" "terraform" {
+  create_database = true
+  create_role     = true
+  name            = "terraform"
+  login           = true
+  password        = random_password.terraform.result
+}
+
+resource "random_password" "terraform" {
+  length  = 24
+  keepers = { cluster_urn = var.postgresql_info.urn }
+  special = true
 }
